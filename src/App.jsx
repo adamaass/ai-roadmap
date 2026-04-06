@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /** Ensures resource links open correctly (data may omit scheme). */
 function resourceHref(url) {
@@ -640,7 +640,17 @@ export default function FullRoadmap() {
   const [phase, setPhase] = useState(1);
   const [openWeek, setOpenWeek] = useState(0);
   const [openP2, setOpenP2] = useState(0);
-  const [completedTasks, setCompletedTasks] = useState({});
+  const [completedTasks, setCompletedTasks] = useState(() => {
+    try {
+      const saved = localStorage.getItem("ai-roadmap-tasks");
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem("ai-roadmap-tasks", JSON.stringify(completedTasks)); }
+    catch { /* quota exceeded or private mode – ignore */ }
+  }, [completedTasks]);
 
   const toggleTask = (wi, di, bi) => {
     const k = `${wi}-${di}-${bi}`;
