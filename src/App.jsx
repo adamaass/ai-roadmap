@@ -656,9 +656,9 @@ export default function FullRoadmap() {
 
       {/* Header */}
       <div style={{ marginBottom: 24, borderBottom: "3px solid var(--header-border)", paddingBottom: 18 }}>
-        <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 4 }}>Formation AI Engineer</div>
-        <h1 style={{ fontSize: 26, fontWeight: 700, margin: 0, lineHeight: 1.2, color: "var(--text)" }}>Roadmap Complète — 16 Semaines</h1>
-        <p style={{ color: "var(--text-muted)", margin: "6px 0 0", fontSize: 13 }}>4h/jour · 6 jours/semaine · 384h total</p>
+        <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 4 }}>Formation AI Engineer</div>
+        <h1 style={{ fontSize: 31, fontWeight: 700, margin: 0, lineHeight: 1.2, color: "var(--text)" }}>Roadmap Complète — 16 Semaines</h1>
+        <p style={{ color: "var(--text-muted)", margin: "6px 0 0", fontSize: 16 }}>4h/jour · 6 jours/semaine · 384h total</p>
       </div>
 
       {/* Phase tabs */}
@@ -669,11 +669,11 @@ export default function FullRoadmap() {
             borderColor: phase === p ? "var(--phase-active-bg)" : "var(--phase-inactive-border)",
             background: phase === p ? "var(--phase-active-bg)" : "var(--phase-inactive-bg)",
             color: phase === p ? "var(--phase-active-text)" : "var(--phase-inactive-text)",
-            borderRadius: 8, fontSize: 13, fontWeight: 600,
+            borderRadius: 8, fontSize: 16, fontWeight: 600,
             fontFamily: "'IBM Plex Sans', sans-serif", transition: "all 0.15s",
           }}>
             {p === 1 ? "Phase 1 — S1 à S8" : "Phase 2 — S9 à S16"}
-            <div style={{ fontSize: 10, fontWeight: 400, marginTop: 2, opacity: 0.7 }}>
+            <div style={{ fontSize: 12, fontWeight: 400, marginTop: 2, opacity: 0.7 }}>
               {p === 1 ? "Construire les fondations" : "Déployer & Spécialiser"}
             </div>
           </button>
@@ -688,7 +688,7 @@ export default function FullRoadmap() {
             <div style={{ flex: 1, height: 8, background: "var(--progress-track)", borderRadius: 4, overflow: "hidden", border: "1px solid var(--border)" }}>
               <div style={{ width: `${(totalDone / totalTasks) * 100}%`, height: "100%", background: "var(--progress-fill)", borderRadius: 3, transition: "width 0.35s ease-out" }} />
             </div>
-            <span style={{ fontSize: 12, fontFamily: "'JetBrains Mono', monospace", color: "var(--text-muted)", fontWeight: 600 }}>{totalDone}/{totalTasks}</span>
+            <span style={{ fontSize: 14, fontFamily: "'JetBrains Mono', monospace", color: "var(--text-muted)", fontWeight: 600 }}>{totalDone}/{totalTasks}</span>
           </div>
 
           {PHASE1_WEEKS.map((week, wi) => {
@@ -697,27 +697,27 @@ export default function FullRoadmap() {
             return (
               <div key={wi} style={{ marginBottom: 6, border: isOpen ? `2px solid ${week.color}` : "1px solid var(--border)", borderRadius: 10, overflow: "hidden", transition: "all 0.2s", background: "var(--surface-2)" }}>
                 <div onClick={() => setOpenWeek(isOpen ? -1 : wi)} style={{ padding: "12px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, background: isOpen ? `${week.color}12` : "transparent" }}>
-                  <div style={{ width: 34, height: 34, borderRadius: 8, background: week.color, color: week.accent, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>S{week.week}</div>
+                  <div style={{ width: 34, height: 34, borderRadius: 8, background: week.color, color: week.accent, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>S{week.week}</div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 600, lineHeight: 1.3, color: "var(--text)" }}>{week.title}</div>
-                    <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 1 }}>{week.hours}</div>
+                    <div style={{ fontSize: 17, fontWeight: 600, lineHeight: 1.3, color: "var(--text)" }}>{week.title}</div>
+                    <div style={{ fontSize: 13, color: "var(--text-muted)", marginTop: 1 }}>{week.hours}</div>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-                    <span style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: prog === 100 ? "#22c55e" : "var(--text-muted)" }}>{prog}%</span>
-                    <span style={{ fontSize: 16, color: "var(--text-subtle)", transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+                    <span style={{ fontSize: 13, fontFamily: "'JetBrains Mono', monospace", color: prog === 100 ? "#22c55e" : "var(--text-muted)" }}>{prog}%</span>
+                    <span style={{ fontSize: 19, color: "var(--text-subtle)", transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                   </div>
                 </div>
 
                 {isOpen && (
                   <div style={{ padding: "0 14px 14px" }}>
-                    <p style={{ fontSize: 12, color: "var(--text-secondary)", margin: "0 0 14px", lineHeight: 1.5, padding: "6px 10px", background: "var(--surface)", borderRadius: 6 }}>
+                    <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "0 0 14px", lineHeight: 1.5, padding: "6px 10px", background: "var(--surface)", borderRadius: 6 }}>
                       🎯 {week.goal}
                     </p>
                     {week.days.map((day, di) => (
                       <div key={di} style={{ marginBottom: 14 }}>
                         <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 6 }}>
-                          <span style={{ fontSize: 10, fontWeight: 700, color: week.color, fontFamily: "'JetBrains Mono', monospace" }}>{day.day}</span>
-                          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--text)" }}>{day.label}</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: week.color, fontFamily: "'JetBrains Mono', monospace" }}>{day.day}</span>
+                          <span style={{ fontSize: 16, fontWeight: 600, color: "var(--text)" }}>{day.label}</span>
                         </div>
                         {day.blocks.map((block, bi) => {
                           const k = `${wi}-${di}-${bi}`;
@@ -725,11 +725,11 @@ export default function FullRoadmap() {
                           const ts = TYPE_COLORS[block.type] || TYPE_COLORS.code;
                           return (
                             <div key={bi} onClick={() => toggleTask(wi, di, bi)} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "8px 8px", marginBottom: 3, borderRadius: 5, cursor: "pointer", background: done ? "var(--task-done-bg)" : "transparent", border: done ? "1px solid rgba(34, 197, 94, 0.35)" : "none", transition: "all 0.15s" }}>
-                              <div style={{ width: 16, height: 16, borderRadius: 3, flexShrink: 0, marginTop: 1, border: done ? "none" : "2px solid var(--checkbox-border)", background: done ? "#22c55e" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "#fff" }}>{done && "✓"}</div>
-                              <div style={{ flex: 1, fontSize: 12, lineHeight: 1.45, textDecoration: done ? "line-through" : "none", color: done ? "var(--task-text-done)" : "var(--task-text)" }}>{block.task}</div>
+                              <div style={{ width: 16, height: 16, borderRadius: 3, flexShrink: 0, marginTop: 1, border: done ? "none" : "2px solid var(--checkbox-border)", background: done ? "#22c55e" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff" }}>{done && "✓"}</div>
+                              <div style={{ flex: 1, fontSize: 14, lineHeight: 1.45, textDecoration: done ? "line-through" : "none", color: done ? "var(--task-text-done)" : "var(--task-text)" }}>{block.task}</div>
                               <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
-                                <span style={{ fontSize: 9, fontFamily: "'JetBrains Mono', monospace", color: "var(--text-muted)" }}>{block.time}</span>
-                                <span style={{ fontSize: 8, fontWeight: 600, padding: "1px 5px", borderRadius: 3, background: ts.bg, color: ts.text }}>{ts.label}</span>
+                                <span style={{ fontSize: 11, fontFamily: "'JetBrains Mono', monospace", color: "var(--text-muted)" }}>{block.time}</span>
+                                <span style={{ fontSize: 10, fontWeight: 600, padding: "1px 5px", borderRadius: 3, background: ts.bg, color: ts.text }}>{ts.label}</span>
                               </div>
                             </div>
                           );
@@ -737,11 +737,11 @@ export default function FullRoadmap() {
                       </div>
                     ))}
                     <div style={{ marginTop: 10, padding: "8px 10px", background: "var(--surface)", borderRadius: 6, borderLeft: `3px solid ${week.color}` }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 4 }}>Ressources</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 4 }}>Ressources</div>
                       {week.resources.map((r, ri) => (
-                        <div key={ri} style={{ fontSize: 11, color: "var(--text-secondary)", marginBottom: 2 }}>
+                        <div key={ri} style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 2 }}>
                           <span style={{ fontWeight: 500, color: "var(--text)" }}>{r.name}</span>{" "}
-                          <span style={{ color: "var(--link-url)", fontFamily: "'JetBrains Mono', monospace", fontSize: 9 }}>— {r.url}</span>
+                          <span style={{ color: "var(--link-url)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}>— {r.url}</span>
                         </div>
                       ))}
                     </div>
@@ -756,7 +756,7 @@ export default function FullRoadmap() {
       {/* ==================== PHASE 2 ==================== */}
       {phase === 2 && (
         <>
-          <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.55, margin: "0 0 18px", padding: "10px 12px", background: "var(--surface)", borderRadius: 8 }}>
+          <p style={{ fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.55, margin: "0 0 18px", padding: "10px 12px", background: "var(--surface)", borderRadius: 8 }}>
             Tu sais construire des modèles et des apps IA. Maintenant : les rendre robustes, les déployer, et commencer à toucher au hardware et aux systèmes distribués.
           </p>
 
@@ -769,9 +769,9 @@ export default function FullRoadmap() {
                 border: openP2 === i ? `2px solid ${p.color}` : "2px solid transparent",
                 transition: "all 0.15s",
               }}>
-                <div style={{ fontSize: 18, marginBottom: 2 }}>{p.icon}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: p.color }}>S{p.num}–{parseInt(p.num) + 1}</div>
-                <div style={{ fontSize: 10, fontWeight: 600, color: "var(--text-secondary)", marginTop: 1, lineHeight: 1.2 }}>{p.title.split("&")[0].split("—")[0].trim()}</div>
+                <div style={{ fontSize: 22, marginBottom: 2 }}>{p.icon}</div>
+                <div style={{ fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: p.color }}>S{p.num}–{parseInt(p.num) + 1}</div>
+                <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-secondary)", marginTop: 1, lineHeight: 1.2 }}>{p.title.split("&")[0].split("—")[0].trim()}</div>
               </div>
             ))}
           </div>
@@ -782,33 +782,33 @@ export default function FullRoadmap() {
               <div key={bi} style={{ border: `2px solid ${bl.color}`, borderRadius: 12, overflow: "hidden" }}>
                 <div style={{ background: `${bl.color}10`, padding: "16px 18px", borderBottom: `1px solid ${bl.color}25` }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: bl.color, background: `${bl.color}18`, padding: "2px 7px", borderRadius: 4 }}>{bl.weeks}</span>
-                    <span style={{ fontSize: 10, color: "var(--text-muted)" }}>48h · 4h/jour · 6j/semaine</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace", color: bl.color, background: `${bl.color}18`, padding: "2px 7px", borderRadius: 4 }}>{bl.weeks}</span>
+                    <span style={{ fontSize: 12, color: "var(--text-muted)" }}>48h · 4h/jour · 6j/semaine</span>
                   </div>
-                  <h2 style={{ fontSize: 18, fontWeight: 700, margin: 0, color: "var(--text)" }}>{bl.icon} {bl.title}</h2>
-                  <p style={{ fontSize: 12, color: "var(--text-secondary)", margin: "6px 0 0", lineHeight: 1.5, fontStyle: "italic" }}>{bl.why}</p>
+                  <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: "var(--text)" }}>{bl.icon} {bl.title}</h2>
+                  <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "6px 0 0", lineHeight: 1.5, fontStyle: "italic" }}>{bl.why}</p>
                 </div>
 
                 <div style={{ padding: "14px 18px" }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 8 }}>Ce que tu vas apprendre</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 8 }}>Ce que tu vas apprendre</div>
                   {bl.topics.map((t, ti) => (
                     <div key={ti} style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "7px 0", borderBottom: ti < bl.topics.length - 1 ? "1px solid var(--divider)" : "none" }}>
-                      <div style={{ width: 20, height: 20, borderRadius: 5, flexShrink: 0, background: `${bl.color}12`, color: bl.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{ti + 1}</div>
-                      <div style={{ fontSize: 12, lineHeight: 1.45, color: "var(--text)" }}>{t}</div>
+                      <div style={{ width: 20, height: 20, borderRadius: 5, flexShrink: 0, background: `${bl.color}12`, color: bl.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{ti + 1}</div>
+                      <div style={{ fontSize: 14, lineHeight: 1.45, color: "var(--text)" }}>{t}</div>
                     </div>
                   ))}
                 </div>
 
                 <div style={{ margin: "0 18px 14px", padding: "12px 14px", borderRadius: 7, background: `${bl.color}06`, borderLeft: `3px solid ${bl.color}` }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: bl.color, marginBottom: 4 }}>🎯 Projet de fin</div>
-                  <div style={{ fontSize: 12, lineHeight: 1.55, color: "var(--text-secondary)", whiteSpace: "pre-line" }}>{bl.project}</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: bl.color, marginBottom: 4 }}>🎯 Projet de fin</div>
+                  <div style={{ fontSize: 14, lineHeight: 1.55, color: "var(--text-secondary)", whiteSpace: "pre-line" }}>{bl.project}</div>
                 </div>
 
                 <div style={{ margin: "0 18px 18px", padding: "10px 12px", borderRadius: 7, background: "var(--surface)" }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 6 }}>Ressources</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 6 }}>Ressources</div>
                   {bl.resources.map((r, ri) => (
-                    <div key={ri} style={{ fontSize: 11, color: "var(--text-secondary)", padding: "2px 0", display: "flex", alignItems: "center", gap: 5 }}>
-                      <span style={{ color: bl.color, fontSize: 7 }}>●</span> {r}
+                    <div key={ri} style={{ fontSize: 13, color: "var(--text-secondary)", padding: "2px 0", display: "flex", alignItems: "center", gap: 5 }}>
+                      <span style={{ color: bl.color, fontSize: 8 }}>●</span> {r}
                     </div>
                   ))}
                 </div>
@@ -818,14 +818,14 @@ export default function FullRoadmap() {
 
           {/* After S16 */}
           <div style={{ marginTop: 18, padding: "14px 16px", borderRadius: 8, border: "1px dashed var(--dash-border)" }}>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 6 }}>Et après ? · Semaines 17–52</div>
-            <div style={{ fontSize: 12, lineHeight: 1.6, color: "var(--text-secondary)" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 6 }}>Et après ? · Semaines 17–52</div>
+            <div style={{ fontSize: 14, lineHeight: 1.6, color: "var(--text-secondary)" }}>
               <strong style={{ color: "var(--text)" }}>S17–24 :</strong> Spécialisation profonde — robotique IA ou infrastructure compute (CUDA, cloud architecture).
             </div>
-            <div style={{ fontSize: 12, lineHeight: 1.6, color: "var(--text-secondary)", marginTop: 4 }}>
+            <div style={{ fontSize: 14, lineHeight: 1.6, color: "var(--text-secondary)", marginTop: 4 }}>
               <strong style={{ color: "var(--text)" }}>S25–36 :</strong> Premier prototype entrepreneurial — produit, validation utilisateur, itération.
             </div>
-            <div style={{ fontSize: 12, lineHeight: 1.6, color: "var(--text-secondary)", marginTop: 4 }}>
+            <div style={{ fontSize: 14, lineHeight: 1.6, color: "var(--text-secondary)", marginTop: 4 }}>
               <strong style={{ color: "var(--text)" }}>S37–52 :</strong> Communauté, open source, connexions écosystème (hardware AI, space tech).
             </div>
           </div>
@@ -833,7 +833,7 @@ export default function FullRoadmap() {
       )}
 
       {/* Footer */}
-      <div style={{ marginTop: 20, padding: "12px 14px", background: "var(--surface)", borderRadius: 8, fontSize: 12, lineHeight: 1.55, color: "var(--text-secondary)" }}>
+      <div style={{ marginTop: 20, padding: "12px 14px", background: "var(--surface)", borderRadius: 8, fontSize: 14, lineHeight: 1.55, color: "var(--text-secondary)" }}>
         <strong style={{ color: "var(--text)" }}>Règle d'or :</strong> Code au moins 50% du temps. Si tu es bloqué plus de 30 minutes, passe à autre chose et reviens-y le lendemain.
       </div>
     </div>
