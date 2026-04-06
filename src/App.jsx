@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+/** Ensures resource links open correctly (data may omit scheme). */
+function resourceHref(url) {
+  if (!url || typeof url !== "string") return "#";
+  const t = url.trim();
+  if (/^https?:\/\//i.test(t)) return t;
+  return `https://${t.replace(/^\/+/, "")}`;
+}
+
 const TYPE_COLORS = {
   code: { bg: "#DBEAFE", text: "#1E40AF", label: "Code" },
   math: { bg: "#FEF3C7", text: "#92400E", label: "Théorie" },
@@ -73,10 +81,10 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "3Blue1Brown — Essence of Linear Algebra", url: "youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" },
-      { name: "Python for Everybody (py4e.com)", url: "py4e.com" },
-      { name: "HackerRank Python", url: "hackerrank.com/domains/python" },
-      { name: "NumPy Quickstart", url: "numpy.org/doc/stable/user/quickstart.html" },
+      { name: "3Blue1Brown — Essence of Linear Algebra", url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" },
+      { name: "Python for Everybody (py4e.com)", url: "https://www.py4e.com" },
+      { name: "HackerRank Python", url: "https://www.hackerrank.com/domains/python" },
+      { name: "NumPy Quickstart", url: "https://numpy.org/doc/stable/user/quickstart.html" },
     ],
   },
   {
@@ -139,9 +147,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "3Blue1Brown — Essence of Calculus", url: "youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" },
-      { name: "StatQuest (YouTube)", url: "youtube.com/@statquest" },
-      { name: "Khan Academy — Multivariable Calculus", url: "khanacademy.org/math/multivariable-calculus" },
+      { name: "3Blue1Brown — Essence of Calculus", url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr" },
+      { name: "StatQuest (YouTube)", url: "https://www.youtube.com/@statquest" },
+      { name: "Khan Academy — Multivariable Calculus", url: "https://www.khanacademy.org/math/multivariable-calculus" },
     ],
   },
   {
@@ -205,9 +213,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "Andrew Ng — ML Specialization (Coursera)", url: "coursera.org/specializations/machine-learning-introduction" },
-      { name: "Scikit-learn User Guide", url: "scikit-learn.org/stable/user_guide.html" },
-      { name: "Kaggle Learn — Intro to ML", url: "kaggle.com/learn/intro-to-machine-learning" },
+      { name: "Andrew Ng — ML Specialization (Coursera)", url: "https://www.coursera.org/specializations/machine-learning-introduction" },
+      { name: "Scikit-learn User Guide", url: "https://scikit-learn.org/stable/user_guide.html" },
+      { name: "Kaggle Learn — Intro to ML", url: "https://www.kaggle.com/learn/intro-to-machine-learning" },
     ],
   },
   {
@@ -269,9 +277,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "3Blue1Brown — Neural Networks", url: "youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" },
-      { name: "Karpathy — micrograd", url: "youtube.com/watch?v=VMj-3S1tku0" },
-      { name: "PyTorch Tutorials", url: "pytorch.org/tutorials" },
+      { name: "3Blue1Brown — Neural Networks", url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" },
+      { name: "Karpathy — micrograd", url: "https://www.youtube.com/watch?v=VMj-3S1tku0" },
+      { name: "PyTorch Tutorials", url: "https://pytorch.org/tutorials" },
     ],
   },
   {
@@ -333,9 +341,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "fast.ai — Practical Deep Learning", url: "course.fast.ai" },
-      { name: "CS231n Stanford (notes)", url: "cs231n.stanford.edu" },
-      { name: "Ultralytics YOLOv8", url: "docs.ultralytics.com" },
+      { name: "fast.ai — Practical Deep Learning", url: "https://course.fast.ai" },
+      { name: "CS231n Stanford (notes)", url: "https://cs231n.stanford.edu" },
+      { name: "Ultralytics YOLOv8", url: "https://docs.ultralytics.com" },
     ],
   },
   {
@@ -397,9 +405,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "Karpathy — Let's build GPT", url: "youtube.com/watch?v=kCc8FmEb1nY" },
-      { name: "Illustrated Transformer (Jay Alammar)", url: "jalammar.github.io/illustrated-transformer" },
-      { name: "Hugging Face NLP Course", url: "huggingface.co/learn/nlp-course" },
+      { name: "Karpathy — Let's build GPT", url: "https://www.youtube.com/watch?v=kCc8FmEb1nY" },
+      { name: "Illustrated Transformer (Jay Alammar)", url: "https://jalammar.github.io/illustrated-transformer/" },
+      { name: "Hugging Face NLP Course", url: "https://huggingface.co/learn/nlp-course" },
     ],
   },
   {
@@ -461,9 +469,9 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "DeepLearning.AI Short Courses (gratuits)", url: "deeplearning.ai/short-courses" },
-      { name: "LangChain Docs", url: "python.langchain.com/docs" },
-      { name: "ChromaDB Getting Started", url: "docs.trychroma.com" },
+      { name: "DeepLearning.AI Short Courses (gratuits)", url: "https://www.deeplearning.ai/short-courses" },
+      { name: "LangChain Docs", url: "https://python.langchain.com/docs" },
+      { name: "ChromaDB Getting Started", url: "https://docs.trychroma.com" },
     ],
   },
   {
@@ -527,10 +535,10 @@ const PHASE1_WEEKS = [
       },
     ],
     resources: [
-      { name: "Streamlit Docs", url: "docs.streamlit.io" },
-      { name: "ROS2 Tutorials", url: "docs.ros.org/en/humble/Tutorials.html" },
-      { name: "TensorFlow Lite Guide", url: "tensorflow.org/lite/guide" },
-      { name: "NVIDIA Jetson Getting Started", url: "developer.nvidia.com/embedded/learn/get-started-jetson-nano" },
+      { name: "Streamlit Docs", url: "https://docs.streamlit.io" },
+      { name: "ROS2 Tutorials", url: "https://docs.ros.org/en/humble/Tutorials.html" },
+      { name: "TensorFlow Lite Guide", url: "https://www.tensorflow.org/lite/guide" },
+      { name: "NVIDIA Jetson Getting Started", url: "https://developer.nvidia.com/embedded/learn/get-started-jetson-nano" },
     ],
   },
 ];
@@ -710,6 +718,20 @@ export default function FullRoadmap() {
 
                 {isOpen && (
                   <div style={{ padding: "0 14px 14px" }}>
+                    <div style={{ marginBottom: 14, padding: "8px 10px", background: "var(--surface)", borderRadius: 6, borderLeft: `3px solid ${week.color}` }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 6 }}>Ressources</div>
+                      {week.resources.map((r, ri) => {
+                        const href = resourceHref(r.url);
+                        const displayUrl = r.url.replace(/^https?:\/\//i, "").replace(/^www\./, "");
+                        return (
+                          <div key={ri} style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: ri < week.resources.length - 1 ? 6 : 0 }}>
+                            <a href={href} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 500, color: "var(--text)", textDecoration: "underline", textUnderlineOffset: 2 }}>{r.name}</a>
+                            <span style={{ color: "var(--link-url)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}> — </span>
+                            <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: "var(--link-url)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, textDecoration: "underline", textUnderlineOffset: 2 }}>{displayUrl}</a>
+                          </div>
+                        );
+                      })}
+                    </div>
                     <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "0 0 14px", lineHeight: 1.5, padding: "6px 10px", background: "var(--surface)", borderRadius: 6 }}>
                       🎯 {week.goal}
                     </p>
@@ -736,15 +758,6 @@ export default function FullRoadmap() {
                         })}
                       </div>
                     ))}
-                    <div style={{ marginTop: 10, padding: "8px 10px", background: "var(--surface)", borderRadius: 6, borderLeft: `3px solid ${week.color}` }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: "var(--text-subtle)", marginBottom: 4 }}>Ressources</div>
-                      {week.resources.map((r, ri) => (
-                        <div key={ri} style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 2 }}>
-                          <span style={{ fontWeight: 500, color: "var(--text)" }}>{r.name}</span>{" "}
-                          <span style={{ color: "var(--link-url)", fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}>— {r.url}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 )}
               </div>
