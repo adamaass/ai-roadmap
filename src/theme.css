@@ -1,0 +1,67 @@
+/* Light / dark via system preference — variables used in App.jsx inline styles */
+:root {
+  color-scheme: light;
+  --app-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #404040;
+  --text-muted: #6b7280;
+  --text-subtle: #888888;
+  --border: #e5e5e5;
+  --border-mid: #e0e0e0;
+  --progress-track: #d4d4d4;
+  --progress-fill: #1a1a1a;
+  --surface: #f9f9f9;
+  --surface-2: #fafafa;
+  --task-done-bg: #f0fdf4;
+  --task-text: #1f2937;
+  --task-text-done: #6b7280;
+  --checkbox-border: #9ca3af;
+  --phase-active-bg: #1a1a1a;
+  --phase-active-text: #ffffff;
+  --phase-inactive-bg: #ffffff;
+  --phase-inactive-border: #e0e0e0;
+  --phase-inactive-text: #525252;
+  --header-border: #1a1a1a;
+  --link-url: #9ca3af;
+  --divider: #f0f0f0;
+  --dash-border: #cccccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --app-bg: #121212;
+    --text: #f4f4f5;
+    --text-secondary: #e4e4e7;
+    --text-muted: #b4b4bb;
+    --text-subtle: #a1a1aa;
+    --border: #3f3f46;
+    --border-mid: #52525b;
+    /* Track clearly lighter than page bg so the bar reads as a “trough” */
+    --progress-track: #3f3f46;
+    /* Fill contrasts strongly against track */
+    --progress-fill: #fafafa;
+    --surface: #1c1c1f;
+    --surface-2: #252529;
+    --task-done-bg: rgba(34, 197, 94, 0.18);
+    --task-text: #f4f4f5;
+    --task-text-done: #c4c4cc;
+    --checkbox-border: #71717a;
+    --phase-active-bg: #f4f4f5;
+    --phase-active-text: #18181b;
+    --phase-inactive-bg: #27272a;
+    --phase-inactive-border: #52525b;
+    --phase-inactive-text: #d4d4d8;
+    --header-border: #e4e4e7;
+    --link-url: #a1a1aa;
+    --divider: #3f3f46;
+    --dash-border: #52525b;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--text);
+}
